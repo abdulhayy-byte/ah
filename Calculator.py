@@ -1,62 +1,91 @@
-import math
-from math import remainder
-
-print('''Choose and type one of the following supported functions:
+prompt = ('''Choose and type one of the following supported functions:
 Addition
 Subtraction
 Multiplication
+Time Table
 Division
-quit''')
+Help (to see this prompt again)
+quit
+Note: Type the function name as shown (capitals don't matter).''')
+print(prompt)
 while True:
     command=input(">")
     if command.lower() == "addition":
-        first=int(input('enter first number:'))
-        second=int(input('enter second number:'))
-        answer= int(first)+int(second)
-        print(f"{first} + {second} = {answer}")
+        first= input('enter first number:')
+        second= input('enter second number:')
+        if first.isdigit() == True and second.isdigit() == True:
+            answer = int(first) + int(second)
+            print(f"{first} + {second} = {answer}")
+        else:
+            print("Please type a number..")
     elif command.lower() =="subtraction":
-        first = int(input('enter first number:'))
-        second = int(input('enter second number:'))
-        answer = int(first) - int(second)
-        print(f"{first} - {second} = {answer}")
+        first = input('enter first number:')
+        second = input('enter second number:')
+        if first.isdigit() == True and second.isdigit() == True:
+            answer = int(first) - int(second)
+            print(f"{first} - {second} = {answer}")
+        else:
+            print("Please type a number..")
     elif command.lower() == "multiplication":
-        first = int(input('enter first number:'))
-        second = int(input('enter second number:'))
-        answer = int(first) * int(second)
-        print(f"{first} x {second} = {answer}")
+        first = input('enter first number:')
+        second = input('enter second number:')
+        if first.isdigit() == True and second.isdigit() == True:
+            answer = int(first) * int(second)
+            print(f"{first} x {second} = {answer}")
+        else:
+            print("Please type a number..")
+    elif command.lower() == "time table":
+        times_table = input("Which times table would you like? ")
+        if times_table.isdigit() == True:
+            for multiplication in range(0, 13):
+                answer = int(times_table) * multiplication
+                print(f"{times_table}x{multiplication}={answer}")
+        else:
+            print("Please type a number..")
     elif command.lower() == "division":
-        div = int(input("""Which type of division would you like(write 1,2, or 3)):
+        div = input("""Which type of division would you like (1,2, or 3):
 1.With decimal
 2.Division as a whole number
 3.With remainder
->"""))
-        if div == 1:
-            first = int(input('enter first number:'))
-            second = int(input('enter second number:'))
-            if second == 0:
-                print("You can't divide with zero...")
+>""")
+        if div == '1':
+            first = input('enter first number:')
+            second = input('enter second number:')
+            if first.isdigit() and second.isdigit():
+                if int(second) == 0:
+                    print("You can't divide with zero...")
+                else:
+                    answer = int(first) / int(second)
+                    print(f"{first} ÷ {second} = {answer}")
             else:
-                answer = int(first) / int(second)
-                print(f"{first} ÷ {second} = {answer}")
-        elif div == 2:
-            first = int(input('enter first number:'))
-            second = int(input('enter second number:'))
-            if second == 0:
-                print("You can't divide with zero...")
+                print("Please type a number..")
+        elif div == '2':
+            first = input('enter first number:')
+            second = input('enter second number:')
+            if first.isdigit() and second.isdigit():
+                if int(second) == 0:
+                    print("You can't divide with zero...")
+                else:
+                    answer = int(first) // int(second)
+                    print(f"{first} ÷ {second} = {answer}")
             else:
-                answer = int(first) // int(second)
-                print(f"{first} ÷ {second} = {answer}")
-        elif div == 3:
-            first = int(input('enter first number:'))
-            second = int(input('enter second number:'))
-            if second == 0:
-                print("You can't divide with zero...")
+                print("Please type a number..")
+        elif div == '3':
+            first = input('enter first number:')
+            second = input('enter second number:')
+            if first.isdigit() and second.isdigit():
+                if int(second) == 0:
+                    print("You can't divide with zero...")
+                else:
+                    answer = int(first) // int(second)
+                    remainder = int(first) % int(second)
+                    print(f"{first} ÷ {second} = {answer} r{remainder}")
             else:
-                answer = int(first) // int(second)
-                remainder= int(first) % int(second)
-                print(f"{first} ÷ {second} = {answer} r{remainder}")
+                print('Please type a number..')
         else:
             print('Use a valid number...')
+    elif command.lower() == "help":
+        print(prompt)
     elif command.lower() == "quit":
         break
     else:
